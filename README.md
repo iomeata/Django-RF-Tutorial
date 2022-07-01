@@ -35,6 +35,14 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
   pip freeze > requirements.txt
 ```
 
+### 4. Set up a new project with a single application
+```python
+  django-admin startproject tutorial .
+```
+```python
+  django-admin startapp quickstart
+```
+
 ### 6. Add Django Rest Framework to settings - [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
 
 </details>
