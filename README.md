@@ -28,6 +28,12 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ```python
   pip install django django-rest-framework django-shortcuts
 ```
+```python
+  pip freeze
+```
+```python
+  pip freeze > requirements.txt
+```
 
 ### 6. Add Django Rest Framework to settings - [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
 
