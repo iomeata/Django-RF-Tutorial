@@ -21,6 +21,9 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ```python
   python -m venv venv
   source venv/bin/activate
+
+  python -m venv venv
+  venv\Scripts\activate
 ```
 
 ### 3. Install Django and Django REST framework
