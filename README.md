@@ -23,6 +23,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
   source venv/bin/activate
 
   python -m venv venv
+  Set-ExecutionPolicy Unrestricted -Scope Process
   venv\Scripts\activate
 ```
 
