@@ -36,6 +36,9 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
   pip freeze
 ```
 ```python
+  pip install -r requirements.txt
+```
+```python
   pip freeze > requirements.txt
 ```
 
