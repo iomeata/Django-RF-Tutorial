@@ -29,9 +29,8 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ```
 </details>
 
-
-
-### 3. Install Django and Django REST framework
+<details>
+  <summary>3. Install Django and Django REST framework</summary>
 
 ```python
   pip install django django-rest-framework django-shortcuts
@@ -45,21 +44,34 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ```python
   pip freeze > requirements.txt
 ```
+</details>
 
-### 4. Set up a new project with a single application
+<details>
+  <summary>4. Set up a new project with a single application</summary>
 ```python
   django-admin startproject tutorial .
 ```
 ```python
   django-admin startapp quickstart
 ```
+</details>
 
-### 5. Sync your database for the first time
+<details>
+  <summary>5. Sync your database for the first time</summary>
 ```python
   python manage.py makemigrations
 ```
 ```python
   python manage.py migrate
 ```
+</details>
 
-### 6. Add Django Rest Framework to settings - [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
+<details>
+  <summary>6. Add Django Rest Framework to settings - [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)</summary>
+
+</details>
+
+<details>
+  <summary>#. Create a virtual environment</summary>
+
+</details>
