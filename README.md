@@ -48,26 +48,32 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 
 <details>
   <summary>4. Set up a new project with a single application</summary>
+
 ```python
   django-admin startproject tutorial .
 ```
 ```python
   django-admin startapp quickstart
 ```
+
 </details>
 
 <details>
   <summary>5. Sync your database for the first time</summary>
+
 ```python
   python manage.py makemigrations
 ```
 ```python
   python manage.py migrate
 ```
+
 </details>
 
 <details>
-  <summary>6. Add Django Rest Framework to settings - [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)</summary>
+  <summary>6. Add Django Rest Framework to settings</summary>
+
+Add Django Rest Framework to settings - [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
 
 </details>
 
