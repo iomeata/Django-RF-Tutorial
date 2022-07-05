@@ -73,6 +73,8 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 <details>
   <summary>6. Add Django Rest Framework to settings</summary>
 
+[here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
+
 ```python
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -84,8 +86,6 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 ```
-
-Add Django Rest Framework to settings - [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
 
 </details>
 
