@@ -11,15 +11,13 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ---
 
 <details>
-  <summary>### 1. Django RF Docs</summary>
+  <summary>1. Django RF Docs</summary>
 
 ### [https://www.django-rest-framework.org/](https://www.django-rest-framework.org/)
 </details>
 
-
-
-
-### 2. Create a virtual environment
+<details>
+  <summary>2. Create a virtual environment</summary>
 
 ```python
   python -m venv venv
@@ -29,6 +27,9 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
   Set-ExecutionPolicy Unrestricted -Scope Process
   venv\Scripts\activate
 ```
+</details>
+
+
 
 ### 3. Install Django and Django REST framework
 
