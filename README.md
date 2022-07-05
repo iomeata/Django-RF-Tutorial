@@ -17,7 +17,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>2. Create a virtual environment</summary>
+  <summary>2. Create a virtual environment Venv</summary>
 
 ```python
   python -m venv venv
@@ -47,7 +47,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>4. Set up a new project with a single application</summary>
+  <summary>4. Set up new project (tutorial) and app (quickstart)</summary>
 
 ```python
   django-admin startproject tutorial .
@@ -59,7 +59,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>5. Sync your database for the first time</summary>
+  <summary>5. Run Migrations</summary>
 
 ```python
   python manage.py makemigrations
