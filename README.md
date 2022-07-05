@@ -12,6 +12,11 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 <details>
   <summary>Click to expand COURSE!</summary>
 
+<details>
+  <summary>### 1. Django RF Docs</summary>
+
+
+</details>
 ### 1. Django RF Docs
 
 ### [https://www.django-rest-framework.org/](https://www.django-rest-framework.org/)
