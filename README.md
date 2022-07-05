@@ -90,7 +90,9 @@ INSTALLED_APPS = [
 </details>
 
 <details>
-  <summary>#. Create a virtual environment</summary>
+  <summary>7. Create SuperUser</summary>
+
+python manage.py createsuperuser --email admin@example.com --username admin
 
 </details>
 
