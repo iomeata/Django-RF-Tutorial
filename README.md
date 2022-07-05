@@ -93,3 +93,11 @@ INSTALLED_APPS = [
   <summary>#. Create a virtual environment</summary>
 
 </details>
+
+<details>
+  <summary>#. Create a virtual environment</summary>
+
+</details>
+
+
+
