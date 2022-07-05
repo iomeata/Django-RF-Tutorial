@@ -92,7 +92,9 @@ INSTALLED_APPS = [
 <details>
   <summary>7. Create SuperUser</summary>
 
+```python
 python manage.py createsuperuser --email admin@example.com --username admin
+```
 
 </details>
 
