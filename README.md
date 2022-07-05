@@ -71,7 +71,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>6. Add Django Rest Framework to settings</summary>
+  <summary>6. Add Django Rest Framework and App to settings</summary>
 
 [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
 
@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'quickstart',
 ]
 ```
 
