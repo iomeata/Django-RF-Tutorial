@@ -156,6 +156,32 @@ class GroupViewSet(viewsets.ModelViewSet):
 </details>
 
 <details>
+  <summary>10. Create API Urls</summary>
+
+[here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/c70bc238d7d8824c56838132a946d84343df848e)
+
+```python
+from django.contrib import admin
+from django.urls import include, path
+from rest_framework import routers
+from quickstart import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]
+```
+
+</details>
+
+<details>
   <summary>#. Create a virtual environment</summary>
 
 </details>
