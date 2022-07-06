@@ -100,7 +100,26 @@ python manage.py createsuperuser --email admin@example.com --username admin
 </details>
 
 <details>
-  <summary>#. Create a virtual environment</summary>
+  <summary>#. Create HyperlinkedModelSerializer for User and Group</summary>
+
+[here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/3705344a5098b551dab1d2586928d71e6783dbae)
+
+```python
+from django.contrib.auth.models import User, Group
+from rest_framework import serializers
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'username', 'email', 'groups']
+
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ['url', 'name']
+```
 
 </details>
 
