@@ -224,6 +224,7 @@ http://127.0.0.1:8000/groups/
 ```python
 http://127.0.0.1:8000/users/
 ```
+![img_1.png](img_1.png)
 
 </details>
 
