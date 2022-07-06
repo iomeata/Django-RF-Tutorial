@@ -210,6 +210,24 @@ class FooViewSet(viewsets.ModelViewSet):
 </details>
 
 <details>
+  <summary>12. Test Endpoints on Browsable API</summary>
+
+```python
+python manage.py runserver
+```
+
+```python
+http://127.0.0.1:8000/groups/
+```
+![img.png](img.png)
+
+```python
+http://127.0.0.1:8000/users/
+```
+
+</details>
+
+<details>
   <summary>#. Create a virtual environment</summary>
 
 </details>
