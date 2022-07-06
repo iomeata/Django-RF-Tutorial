@@ -193,7 +193,7 @@ REST_FRAMEWORK = {
 }
 ```
 
-OR for a single ModelViewSet:
+or for a single ModelViewSet:
 
 ```python
 from rest_framework.pagination import PageNumberPagination
