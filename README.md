@@ -182,6 +182,34 @@ urlpatterns = [
 </details>
 
 <details>
+  <summary>11. Set Pagination</summary>
+
+[here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/c0f58cb7b5ef664fa6ecca9b5dafd21efcf38b48)
+
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+```
+
+OR for a single ModelViewSet:
+
+```python
+from rest_framework.pagination import PageNumberPagination
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 100
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+class FooViewSet(viewsets.ModelViewSet):
+    pagination_class = StandardResultsSetPagination
+```
+
+</details>
+
+<details>
   <summary>#. Create a virtual environment</summary>
 
 </details>
