@@ -100,7 +100,7 @@ python manage.py createsuperuser --email admin@example.com --username admin
 </details>
 
 <details>
-  <summary>#. Create HyperlinkedModelSerializer for User and Group</summary>
+  <summary>8. Create HyperlinkedModelSerializer for User and Group</summary>
 
 [here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/3705344a5098b551dab1d2586928d71e6783dbae)
 
