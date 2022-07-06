@@ -228,6 +228,12 @@ http://127.0.0.1:8000/users/
 
 </details>
 
+---
+
+### [2-SERIALIZATION](#)
+
+---
+
 <details>
   <summary>#. Create a virtual environment</summary>
 
