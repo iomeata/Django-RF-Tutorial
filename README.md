@@ -254,7 +254,7 @@ pip install pygments  # We'll be using this for the code highlighting
 </details>
 
 <details>
-  <summary>#. Create new APP "snippets"</summary>
+  <summary>2. Create new APP "snippets"</summary>
 
 ```python
 python manage.py startapp snippets
