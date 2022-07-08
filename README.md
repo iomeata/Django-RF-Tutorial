@@ -12,7 +12,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 
 <details>
   <summary>OPEN</summary>
-
+<hr>
 
 <details>
   <summary>1. Django RF Docs</summary>
@@ -235,6 +235,7 @@ http://127.0.0.1:8000/users/
 
 
 </details>
+
 ---
 
 ### [2-SERIALIZATION](#)
