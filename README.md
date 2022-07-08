@@ -11,6 +11,10 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ---
 
 <details>
+  <summary>OPEN</summary>
+
+
+<details>
   <summary>1. Django RF Docs</summary>
 
 ### [https://www.django-rest-framework.org/](https://www.django-rest-framework.org/)
@@ -228,6 +232,9 @@ http://127.0.0.1:8000/users/
 
 </details>
 
+
+
+</details>
 ---
 
 ### [2-SERIALIZATION](#)
