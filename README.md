@@ -254,7 +254,7 @@ pip install pygments  # We'll be using this for the code highlighting
 </details>
 
 <details>
-  <summary>2. Create new APP "snippets"</summary>
+  <summary>2. Create new App "snippets"</summary>
 
 ```python
 python manage.py startapp snippets
@@ -272,6 +272,15 @@ INSTALLED_APPS = [
 
 
 <details>
-  <summary>#. Create a virtual environment</summary>
+  <summary>3. Create snippets model</summary>
+
+```python
+python manage.py startapp snippets
+```
+
+</details>
+
+<details>
+  <summary>4. Create a virtual environment</summary>
 
 </details>
