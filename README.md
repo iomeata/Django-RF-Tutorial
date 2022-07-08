@@ -219,12 +219,12 @@ python manage.py runserver
 ```python
 http://127.0.0.1:8000/groups/
 ```
-![img.png](img.png)
+![img.png](media/img.png)
 
 ```python
 http://127.0.0.1:8000/users/
 ```
-![img_1.png](img_1.png)
+![img_1.png](media/img_1.png)
 
 </details>
 
