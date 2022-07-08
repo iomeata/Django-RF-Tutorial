@@ -235,7 +235,13 @@ http://127.0.0.1:8000/users/
 ---
 
 <details>
-  <summary>#. Create a virtual environment</summary>
+  <summary>1. Install pygments</summary>
+
+```python
+pip install django
+pip install djangorestframework
+pip install pygments  # We'll be using this for the code highlighting
+```
 
 </details>
 
