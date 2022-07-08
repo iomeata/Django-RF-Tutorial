@@ -254,9 +254,24 @@ pip install pygments  # We'll be using this for the code highlighting
 </details>
 
 <details>
-  <summary>#. Create a virtual environment</summary>
+  <summary>#. Create new APP "snippets"</summary>
+
+```python
+python manage.py startapp snippets
+```
+
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'snippets',
+]
+```
 
 </details>
 
 
+<details>
+  <summary>#. Create a virtual environment</summary>
 
+</details>
