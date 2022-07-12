@@ -18,6 +18,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
   <summary>1. Django RF Docs</summary>
 
 ### [https://www.django-rest-framework.org/](https://www.django-rest-framework.org/)
+
 </details>
 
 <details>
@@ -31,6 +32,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
   Set-ExecutionPolicy Unrestricted -Scope Process
   source venv\Scripts\activate
 ```
+
 </details>
 
 <details>
@@ -39,15 +41,19 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ```python
   pip install django django-rest-framework django-shortcuts
 ```
+
 ```python
   pip freeze
 ```
+
 ```python
   pip install -r requirements.txt
 ```
+
 ```python
   pip freeze > requirements.txt
 ```
+
 </details>
 
 <details>
@@ -56,6 +62,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ```python
   django-admin startproject tutorial .
 ```
+
 ```python
   django-admin startapp quickstart
 ```
@@ -68,6 +75,7 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ```python
   python manage.py makemigrations
 ```
+
 ```python
   python manage.py migrate
 ```
@@ -223,16 +231,16 @@ python manage.py runserver
 ```python
 http://127.0.0.1:8000/groups/
 ```
+
 ![img.png](media/img.png)
 
 ```python
 http://127.0.0.1:8000/users/
 ```
+
 ![img_1.png](media/img_1.png)
 
 </details>
-
-
 
 </details>
 
@@ -270,12 +278,34 @@ INSTALLED_APPS = [
 
 </details>
 
-
 <details>
   <summary>3. Create snippets model</summary>
 
 ```python
-python manage.py startapp snippets
+from django.db import models
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
+
+LEXERS = [item for item in get_all_lexers() if item[1]]
+LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
+
+
+class Snippet(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100, blank=True, default='')
+    code = models.TextField()
+    linenos = models.BooleanField(default=False)
+    language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
+    style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
+
+    class Meta:
+        ordering = ['created']
+```
+
+```python
+python manage.py makemigrations snippets
+python manage.py migrate snippets
 ```
 
 </details>
