@@ -1309,6 +1309,7 @@ class ListProducts(APIView):
 
     def post(self, request):
         serializer = ProductSerializer(data=request.data)
+
         if serializer.is_valid(raise_exception=True):
             saved_data = serializer.save()
             context = {
@@ -1324,6 +1325,7 @@ class DetailedProducts(APIView):
         try:
             queryset = Product.objects.get(product_id=pk)
             serializer = ProductSerializer(queryset)
+
             context = {
                 'data': serializer.data
             }
@@ -1334,6 +1336,7 @@ class DetailedProducts(APIView):
     def put(self, request, pk):
         queryset = Product.objects.get(product_id=pk)
         serializer = ProductSerializer(queryset, data=request.data)
+
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             name = serializer.data.get('name')
@@ -1352,6 +1355,7 @@ class DetailedProducts(APIView):
 class ListProductsMixins(mixins.ListModelMixin,
                          mixins.CreateModelMixin,
                          generics.GenericAPIView):
+
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     def get(self, request, *args, **kwargs):
