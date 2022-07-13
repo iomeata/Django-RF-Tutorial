@@ -503,7 +503,7 @@ https://www.django-rest-framework.org/
   <summary>2. Create-venv-DRF and Install Django</summary>
 
 ```python
-python -m venv venv
+python -m venv venv-DRF
 source venv/bin/activate
 ```
 
@@ -665,10 +665,18 @@ python manage.py runserver
 </details>
 
 <details>
-  <summary>7. Create-ENV and Install Django</summary>
+  <summary>7. Create Product App</summary>
 
 ```python
-https://www.django-rest-framework.org/
+python manage.py startapp product
+```
+
+```python
+INSTALLED_APPS = [
+    ---
+    'rest_framework',
+    'product',
+]
 ```
 
 </details>
