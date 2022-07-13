@@ -500,7 +500,7 @@ https://www.django-rest-framework.org/
 </details>
 
 <details>
-  <summary>2. Create-ENV and Install Django</summary>
+  <summary>2. Create-venv-DRF and Install Django</summary>
 
 ```python
 python -m venv venv
@@ -543,7 +543,34 @@ http://127.0.0.1:8000/api-auth/login/
 </details>
 
 <details>
-  <summary>2. Create-ENV and Install Django</summary>
+  <summary>4. Include DjangoModelPermissionsOrAnonReadOnly</summary>
+
+```python
+https://www.django-rest-framework.org/
+```
+
+</details>
+
+<details>
+  <summary>5. Create-ENV and Install Django</summary>
+
+```python
+https://www.django-rest-framework.org/
+```
+
+</details>
+
+<details>
+  <summary>5. Create-ENV and Install Django</summary>
+
+```python
+https://www.django-rest-framework.org/
+```
+
+</details>
+
+<details>
+  <summary>5. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
