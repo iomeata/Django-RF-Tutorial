@@ -912,7 +912,163 @@ def list_messages(request):
 </details>
 
 <details>
-  <summary>13. Create-ENV and Install Django</summary>
+  <summary>13. Create ProductCategory Model</summary>
+
+```python
+from django.db import models
+
+
+class ProductCategory(models.Model):
+    category_name = models.CharField(max_length=100)
+    category_id = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.category_name
+
+
+class Product(models.Model):
+    category_name = models.ForeignKey('ProductCategory', related_name='ProductCategory',
+                                      on_delete=models.CASCADE)
+    product_id = models.PositiveIntegerField(primary_key=True)
+    name = models.CharField(max_length=100)
+    cost = models.DecimalField(max_digits=6, decimal_places=2)
+    date = models.DateField()
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.name
+```
+
+```python
+python manage.py makemigrations
+```
+
+```python
+python manage.py migrate
+```
+
+</details>
+
+<details>
+  <summary>14. Add ProductCategory Model to Admin</summary>
+
+```python
+from django.contrib import admin
+from .models import Product, ProductCategory
+
+
+admin.site.register(Product)
+admin.site.register(ProductCategory)
+```
+
+</details>
+
+<details>
+  <summary>15. Create Class Based Views</summary>
+
+```python
+from django.shortcuts import render
+from .models import Product
+from .serializers import ProductSerializer, MessageSerializer
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from datetime import datetime
+
+
+class Message():
+    def __init__(self, email, content, created_at=None, updated_at=None):
+        self.email = email
+        self.content = content
+        self.created_at = created_at or datetime.now()
+        self.updated_at = updated_at or datetime.now()
+
+
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
+def list_products(request):
+    queryset = Product.objects.all()
+    serializer = ProductSerializer(queryset, many=True)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context, status=status.HTTP_200_OK)
+
+@api_view(['GET', 'POST'])
+def list_messages(request):
+    message_obj = Message('customer@gmail.com', 'Hello People!')
+    serializer = MessageSerializer(message_obj)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context, status=status.HTTP_200_OK)
+
+class ListProducts(APIView):
+    def get(self, request):
+        try:
+            queryset = Product.objects.all()
+            serializer = ProductSerializer(queryset, many=True)
+            context = {
+                'data': serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Product.DoesNotExist:
+            context = {
+                'message': 'No products found.'
+            }
+            return Response(context, status=status.HTTP_404_NOT_FOUND)
+
+    def post(self, request):
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            saved_data = serializer.save()
+            context = {
+                'data': serializer.data,
+                'name': serializer.data.get('name'),
+                'message': f"The product {saved_data.name} has been created."
+            }
+            return Response(context, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DetailedProducts(APIView):
+    def get(self, request, pk):
+        try:
+            queryset = Product.objects.get(product_id=pk)
+            serializer = ProductSerializer(queryset)
+            context = {
+                'data': serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Product.DoesNotExist:
+            return Response({'message': 'Product does not exist!'}, status=status.HTTP_404_NOT_FOUND)
+
+    def put(self, request, pk):
+        queryset = Product.objects.get(product_id=pk)
+        serializer = ProductSerializer(queryset, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            name = serializer.data.get('name')
+            context = {
+                'data': serializer.data,
+                'message': f"The product {name} has been updated."
+            }
+            return Response(context, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        queryset = Product.objects.get(product_id=pk)
+        queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+```
+
+</details>
+
+<details>
+  <summary>16. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
@@ -921,7 +1077,7 @@ https://www.django-rest-framework.org/
 </details>
 
 <details>
-  <summary>14. Create-ENV and Install Django</summary>
+  <summary>17. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
