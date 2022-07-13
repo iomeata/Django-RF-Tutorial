@@ -348,7 +348,7 @@ class SnippetSerializer(serializers.Serializer):
 </details>
 
 <details>
-  <summary>5. Working with Django Shell</summary>
+  <summary>5. Understanding Serialization: Working with Django Shell</summary>
 
 ```python
 python manage.py shell
