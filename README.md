@@ -821,7 +821,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
 
-@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+@api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticated,))
 def list_products(request):
     queryset = Product.objects.all()
@@ -840,6 +840,8 @@ def list_products(request):
 ```python
 from rest_framework import serializers
 from .models import Product
+
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
@@ -882,30 +884,30 @@ class Message():
         self.updated_at = updated_at or datetime.now()
 
 
-    @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
-    @permission_classes((IsAuthenticated,))
-    def list_products(request):
-        queryset = Product.objects.all()
-        serializer = ProductSerializer(queryset, many=True)
-        context = {
-            'data': serializer.data
-        }
-        return Response(context)
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
+def list_products(request):
+    queryset = Product.objects.all()
+    serializer = ProductSerializer(queryset, many=True)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context)
 
-    @api_view(['GET', 'POST'])
-    def list_messages(request):
-        message_obj = Message('customer@gmail.com', 'Hello People!')
-        serializer = MessageSerializer(message_obj)
-        context = {
-            'data': serializer.data
-        }
-        return Response(context)
+@api_view(['GET', 'POST'])
+def list_messages(request):
+    message_obj = Message('customer@gmail.com', 'Hello People!')
+    serializer = MessageSerializer(message_obj)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context)
 ```
 
 </details>
 
 <details>
-  <summary>9. Create-ENV and Install Django</summary>
+  <summary>14. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
