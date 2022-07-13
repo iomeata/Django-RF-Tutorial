@@ -348,11 +348,32 @@ class SnippetSerializer(serializers.Serializer):
 </details>
 
 <details>
-  <summary>5. Create SnippetSerializer</summary>
+  <summary>5. Working with Django Shell</summary>
 
 ```python
-python manage.py makemigrations snippets
-python manage.py migrate snippets
+python manage.py shell
+```
+
+```python
+from snippets.models import Snippet
+from snippets.serializers import SnippetSerializer
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+
+snippet = Snippet(code='foo = "bar"\n')
+snippet.save()
+
+snippet = Snippet(code='print("hello, world")\n')
+snippet.save()
+```
+
+```python
+serializer = SnippetSerializer(snippet)
+serializer.data
+```
+
+```python
+python manage.py shell
 ```
 
 </details>
