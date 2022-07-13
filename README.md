@@ -756,7 +756,7 @@ class ProductSerializer(serializers.ModelSerializer):
 </details>
 
 <details>
-  <summary>11.Create Productlist View and URL</summary>
+  <summary>11. Create Productlist View and URL</summary>
 
 ```python
 from django.shortcuts import render
