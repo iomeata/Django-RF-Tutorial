@@ -682,7 +682,230 @@ INSTALLED_APPS = [
 </details>
 
 <details>
-  <summary>8. Create-ENV and Install Django</summary>
+  <summary>8. Create Product Model</summary>
+
+```python
+from django.db import models
+
+
+class Product(models.Model):
+    product_id = models.PositiveIntegerField(primary_key=True)
+    name = models.CharField(max_length=100)
+    cost = models.DecimalField(max_digits=6, decimal_places=2)
+    date = models.DateField()
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+```
+
+```python
+python manage.py makemigrations
+```
+
+```python
+python manage.py migrate
+```
+
+</details>
+
+<details>
+  <summary>9.Register Product Model in Admin</summary>
+
+```python
+from django.contrib import admin
+from .models import Product
+
+
+admin.site.register(Product)
+```
+
+```python
+python manage.py runserver
+```
+
+</details>
+
+<details>
+  <summary>10. Create Model Serializer</summary>
+
+Type of Serializers
+
+```python
+- Simple Serializers
+- Model Serializers
+- HyperlinkedModel Serializers
+- List Serializers
+- Base Serializers
+```
+
+```python
+from rest_framework import serializers
+from .models import Product
+
+
+class ProductSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = '__all__'
+```
+
+</details>
+
+<details>
+  <summary>11.Create Productlist View and URL</summary>
+
+```python
+from django.shortcuts import render
+from .models import Product
+from .serializers import ProductSerializer
+from rest_framework.response import Response
+#from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+
+
+@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+def list_products(request):
+    queryset = Product.objects.all()
+    serializer = ProductSerializer(queryset, many=True)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context)
+```
+
+tutorial/urls.py
+
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('products/', include('product.urls')),
+]
+```
+
+product/urls.py
+
+```python
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path('productlist/', views.list_products, name='list-products'),
+]
+```
+
+```python
+python manage.py runserver
+```
+
+```python
+http://127.0.0.1:8000/products/productlist/
+```
+
+</details>
+
+<details>
+  <summary>12. Apply Authentication</summary>
+
+```python
+from .serializers import ProductSerializer
+from rest_framework.response import Response
+#from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
+
+@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+@permission_classes((IsAuthenticated,))
+def list_products(request):
+    queryset = Product.objects.all()
+    serializer = ProductSerializer(queryset, many=True)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context)
+```
+
+</details>
+
+<details>
+  <summary>13. Create Message Serializer, URL and View</summary>
+
+```python
+from rest_framework import serializers
+from .models import Product
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+class MessageSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    content = serializers.CharField(max_length=200)
+    created_at = serializers.DateTimeField()
+    updated_at = serializers.DateTimeField()
+```
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('productlist/', views.list_products, name='list-products'),
+    path('messagelist/', views.list_messages, name='list-messages'),
+]
+```
+
+```python
+from django.shortcuts import render
+from .models import Product
+from .serializers import ProductSerializer
+from .serializers import ProductSerializer, MessageSerializer
+from rest_framework.response import Response
+#from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from datetime import datetime
+
+
+class Message():
+    def __init__(self, email, content, created_at=None, updated_at=None):
+        self.email = email
+        self.content = content
+        self.created_at = created_at or datetime.now()
+        self.updated_at = updated_at or datetime.now()
+
+
+    @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+    @permission_classes((IsAuthenticated,))
+    def list_products(request):
+        queryset = Product.objects.all()
+        serializer = ProductSerializer(queryset, many=True)
+        context = {
+            'data': serializer.data
+        }
+        return Response(context)
+
+    @api_view(['GET', 'POST'])
+    def list_messages(request):
+        message_obj = Message('customer@gmail.com', 'Hello People!')
+        serializer = MessageSerializer(message_obj)
+        context = {
+            'data': serializer.data
+        }
+        return Response(context)
+```
+
+</details>
+
+<details>
+  <summary>9. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
