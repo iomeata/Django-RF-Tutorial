@@ -593,7 +593,84 @@ urlpatterns = [
 </details>
 
 <details>
-  <summary>5. Create-ENV and Install Django</summary>
+  <summary>6. Demo - API Root</summary>
+
+```python
+http://127.0.0.1:8000/
+```
+
+```python
+http://127.0.0.1:8000/users/
+```
+
+```python
+http://127.0.0.1:8000/users/1/
+```
+
+</details>
+
+<details>
+  <summary>7. Create PostgreSQL database</summary>
+
+```python
+# ubuntu command to access the postgres terminal
+psql -d template1
+# create postgres database
+CREATE DATABASE mbd;
+psql -h localhost
+# create postgres database user
+CREATE USER mcommerce WITH PASSWORD '123456';
+# set user encoding to utf8
+ALTER ROLE mcommerce SET client_encoding TO 'utf8';
+# set user default_transaction_isolation
+ALTER ROLE mcommerce SET default_transaction_isolation TO 'read committed';
+# set user timezone
+ALTER ROLE mcommerce SET timezone TO 'Africa/Lagos';
+# for full text search - evaluate the similarity of two strings by the number of “trigrams” they share.
+CREATE EXTENSION pg_trgm;
+# search without worrying about accented characters, useful in different languages
+CREATE EXTENSION unaccent;
+# grant full access to the database
+GRANT ALL PRIVILEGES ON DATABASE mbd TO mcommerce;
+```
+
+```python
+pip install psycopg2
+```
+
+```python
+ALLOWED_HOSTS = ['.example.com','127.0.0.1', 'localhost']
+```
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mdb',
+        'USER': 'mcommerce',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+
+```python
+python manage.py makemigrations
+```
+
+```python
+python manage.py migrate
+```
+
+```python
+python manage.py runserver
+```
+
+</details>
+
+<details>
+  <summary>8. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
