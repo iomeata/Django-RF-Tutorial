@@ -538,7 +538,7 @@ python manage.py createsuperuser
 http://127.0.0.1:8000/api-auth/login/
 ```
 
-![image3](/Django-RF-Docs-Tutorial/media/image3.png)
+![image3](/media/image3.png)
 
 </details>
 
