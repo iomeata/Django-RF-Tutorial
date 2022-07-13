@@ -590,11 +590,6 @@ urlpatterns = [
 ]
 ```
 
-</details>
-
-<details>
-  <summary>6. Demo - API Root</summary>
-
 ```python
 http://127.0.0.1:8000/
 ```
@@ -610,7 +605,7 @@ http://127.0.0.1:8000/users/1/
 </details>
 
 <details>
-  <summary>7. Create PostgreSQL database</summary>
+  <summary>6. Create PostgreSQL database</summary>
 
 ```python
 # ubuntu command to access the postgres terminal
@@ -670,6 +665,15 @@ python manage.py runserver
 </details>
 
 <details>
+  <summary>7. Create-ENV and Install Django</summary>
+
+```python
+https://www.django-rest-framework.org/
+```
+
+</details>
+
+<details>
   <summary>8. Create-ENV and Install Django</summary>
 
 ```python
@@ -679,7 +683,7 @@ https://www.django-rest-framework.org/
 </details>
 
 <details>
-  <summary>5. Create-ENV and Install Django</summary>
+  <summary>9. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
