@@ -546,7 +546,13 @@ http://127.0.0.1:8000/api-auth/login/
   <summary>4. Include DjangoModelPermissionsOrAnonReadOnly</summary>
 
 ```python
-https://www.django-rest-framework.org/
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 ```
 
 </details>
