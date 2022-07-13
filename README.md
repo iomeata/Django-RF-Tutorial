@@ -836,6 +836,8 @@ def list_products(request):
 <details>
   <summary>12. Create Messagelist Serializer, URL and View</summary>
 
+Serializer
+
 ```python
 from rest_framework import serializers
 from .models import Product
@@ -853,6 +855,8 @@ class MessageSerializer(serializers.Serializer):
     updated_at = serializers.DateTimeField()
 ```
 
+URL
+
 ```python
 from django.urls import path
 from . import views
@@ -862,6 +866,8 @@ urlpatterns = [
     path('messagelist/', views.list_messages, name='list-messages'),
 ]
 ```
+
+View
 
 ```python
 from django.shortcuts import render
