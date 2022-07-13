@@ -491,12 +491,62 @@ python manage.py migrate snippets
 ---
 
 <details>
-  <summary>1. Install pygments</summary>
+  <summary>1. Django RF Docs</summary>
 
 ```python
-pip install django
-pip install djangorestframework
-pip install pygments  # We'll be using this for the code highlighting
+https://www.django-rest-framework.org/
+```
+
+</details>
+
+<details>
+  <summary>2. Create-ENV and Install Django</summary>
+
+```python
+python -m venv venv
+source venv/bin/activate
+```
+
+```python
+pip install django django-rest-framework django-shortcuts
+```
+
+</details>
+
+<details>
+  <summary>3. Add and Access REST framework's Default login and logout views</summary>
+
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+]
+```
+
+```python
+urlpatterns = [
+    ...
+    path('api-auth/', include('rest_framework.urls'))
+]
+```
+
+```python
+python manage.py createsuperuser
+```
+
+```python
+http://127.0.0.1:8000/api-auth/login/
+```
+
+![image3](/Django-RF-Docs-Tutorial/media/image3.png)
+
+</details>
+
+<details>
+  <summary>2. Create-ENV and Install Django</summary>
+
+```python
+https://www.django-rest-framework.org/
 ```
 
 </details>
