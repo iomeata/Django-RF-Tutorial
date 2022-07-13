@@ -378,6 +378,17 @@ serializer.data
 #{'id': 2, 'title': '', 'code': 'print("hello, world")\n', 'linenos': False, 'language': 'python', 'style': 'friendly'}
 ```
 
+Python Object --> JSON Object
+
+```python
+content = JSONRenderer().render(serializer.data)
+content
+```
+
+```python
+#b'{"id":2,"title":"","code":"print(\\"hello, world\\")\\n","linenos":false,"language":"python","style":"friendly"}'
+```
+
 ```python
 python manage.py shell
 ```
