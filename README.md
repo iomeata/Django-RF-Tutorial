@@ -729,7 +729,7 @@ python manage.py runserver
 </details>
 
 <details>
-  <summary>10. Create Productlist Model Serializer</summary>
+  <summary>10. Create Productlist Serializer, View and URL</summary>
 
 Type of Serializers
 
@@ -752,11 +752,6 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 ```
-
-</details>
-
-<details>
-  <summary>11. Create Productlist View and URL</summary>
 
 ```python
 from django.shortcuts import render
@@ -810,7 +805,7 @@ http://127.0.0.1:8000/products/productlist/
 </details>
 
 <details>
-  <summary>12. Apply Authentication</summary>
+  <summary>11. Apply Authentication</summary>
 
 ```python
 from .serializers import ProductSerializer
@@ -835,7 +830,7 @@ def list_products(request):
 </details>
 
 <details>
-  <summary>13. Create Messagelist Serializer, URL and View</summary>
+  <summary>12. Create Messagelist Serializer, URL and View</summary>
 
 ```python
 from rest_framework import serializers
@@ -907,7 +902,7 @@ def list_messages(request):
 </details>
 
 <details>
-  <summary>14. Create-ENV and Install Django</summary>
+  <summary>13. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
@@ -916,7 +911,7 @@ https://www.django-rest-framework.org/
 </details>
 
 <details>
-  <summary>9. Create-ENV and Install Django</summary>
+  <summary>14. Create-ENV and Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
