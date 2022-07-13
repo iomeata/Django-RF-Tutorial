@@ -729,7 +729,7 @@ python manage.py runserver
 </details>
 
 <details>
-  <summary>10. Create Model Serializer</summary>
+  <summary>10. Create Productlist Model Serializer</summary>
 
 Type of Serializers
 
@@ -835,7 +835,7 @@ def list_products(request):
 </details>
 
 <details>
-  <summary>13. Create Message Serializer, URL and View</summary>
+  <summary>13. Create Messagelist Serializer, URL and View</summary>
 
 ```python
 from rest_framework import serializers
