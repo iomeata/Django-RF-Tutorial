@@ -354,6 +354,8 @@ class SnippetSerializer(serializers.Serializer):
 python manage.py shell
 ```
 
+Creating Model Object
+
 ```python
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
