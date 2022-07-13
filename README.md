@@ -712,7 +712,7 @@ python manage.py migrate
 </details>
 
 <details>
-  <summary>9.Register Product Model in Admin</summary>
+  <summary>9. Register Product Model in Admin</summary>
 
 ```python
 from django.contrib import admin
@@ -729,7 +729,7 @@ python manage.py runserver
 </details>
 
 <details>
-  <summary>10. Create Productlist Serializer, View and URL</summary>
+  <summary>10. Create Productlist Serializer, URL and View</summary>
 
 Type of Serializers
 
@@ -762,7 +762,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 
-@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+@api_view(['GET', 'POST'])
 def list_products(request):
     queryset = Product.objects.all()
     serializer = ProductSerializer(queryset, many=True)
