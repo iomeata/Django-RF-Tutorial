@@ -380,7 +380,7 @@ serializer.data
 #{'id': 2, 'title': '', 'code': 'print("hello, world")\n', 'linenos': False, 'language': 'python', 'style': 'friendly'}
 ```
 
-Python Object --> JSON Object (Serialization)(Render from Python to JSON)
+Python Object --> JSON Object (Serialization) (Render from Python to JSON)
 
 ```python
 content = JSONRenderer().render(serializer.data)
@@ -391,7 +391,7 @@ content
 #b'{"id":2,"title":"","code":"print(\\"hello, world\\")\\n","linenos":false,"language":"python","style":"friendly"}'
 ```
 
-JSON Object --> Python Object (Deserialization)(Parse from JSON to Python)
+JSON Object --> Python Object (Deserialization) (Parse from JSON to Python)
 
 ```python
 import io
@@ -408,11 +408,24 @@ data
 Python Object --> Model Object (Deserialization)
 
 ```python
-python manage.py shell
+serializer = SnippetSerializer(data=data)
+serializer.is_valid()
+# True
+serializer.validated_data
+# OrderedDict([('title', ''), ('code', 'print("hello, world")\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')])
+serializer.save()
+# <Snippet: Snippet object>
+```
+
+Serializing Querysets
+
+```python
+serializer = SnippetSerializer(Snippet.objects.all(), many=True)
+serializer.data
 ```
 
 ```python
-python manage.py shell
+# [OrderedDict([('id', 1), ('title', ''), ('code', 'foo = "bar"\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')]), OrderedDict([('id', 2), ('title', ''), ('code', 'print("hello, world")\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')]), OrderedDict([('id', 3), ('title', ''), ('code', 'print("hello, world")'), ('linenos', False), ('language', 'python'), ('style', 'friendly')])]
 ```
 
 </details>
