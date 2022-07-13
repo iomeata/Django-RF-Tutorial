@@ -965,7 +965,7 @@ admin.site.register(ProductCategory)
 </details>
 
 <details>
-  <summary>15. Create Class Based Views</summary>
+  <summary>15. Create Products Class Based Views</summary>
 
 ```python
 from django.shortcuts import render
@@ -1068,7 +1068,213 @@ class DetailedProducts(APIView):
 </details>
 
 <details>
-  <summary>16. Create-ENV and Install Django</summary>
+  <summary>16. Mixins</summary>
+
+ListModelMixin
+
+```python
+.list(request, *args, **kwargs) --> 200 OK
+```
+
+CreateModelMixin
+
+```python
+.create(request, *args, **kwargs) --> 201 Created --> 400 Bad Request
+```
+
+RetrieveModelMixin
+
+```python
+.retrieve(request, *args, **kwargs) --> 200 OK --> 404 Not Found
+```
+
+UpdateModelMixin
+
+```python
+.update(request, *args, **kwargs) --> 200 OK --> 400 Bad Request
+.partial_update(request, *args, **kwargs) --> 200 OK --> 400 Bad Request
+```
+
+DestroyModelMixin
+
+```python
+.destroy(request, *args, **kwargs) --> 204 No Content --> 404 Not Found
+```
+
+</details>
+
+<details>
+  <summary>17. Create ListProductsMixins</summary>
+
+URL
+
+```python
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('productlist/', views.list_products, name='list-products'),
+    path('messagelist/', views.list_messages, name='list-messages'),
+    path('classproductlist/', views.ListProducts.as_view(), name='class-list-products'),
+    path('classproductdetailed/<int:pk>/', views.DetailedProducts.as_view(), name='class-detailed-products'),
+    path('productlistmixins/', views.ListProductsMixins.as_view(), name='list-products-mixins'),
+]
+```
+
+Views
+
+```python
+from django.shortcuts import render
+from .models import Product
+from .serializers import ProductSerializer, MessageSerializer
+from rest_framework import status
+from rest_framework import status, mixins, generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from datetime import datetime
+
+
+class Message():
+    def __init__(self, email, content, created_at=None, updated_at=None):
+        self.email = email
+        self.content = content
+        self.created_at = created_at or datetime.now()
+        self.updated_at = updated_at or datetime.now()
+
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
+def list_products(request):
+    queryset = Product.objects.all()
+    serializer = ProductSerializer(queryset, many=True)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context, status=status.HTTP_200_OK)
+
+@api_view(['GET', 'POST'])
+def list_messages(request):
+    message_obj = Message('customer@gmail.com', 'Hello People!')
+    serializer = MessageSerializer(message_obj)
+    context = {
+        'data': serializer.data
+    }
+    return Response(context, status=status.HTTP_200_OK)
+
+class ListProducts(APIView):
+    def get(self, request):
+        try:
+            queryset = Product.objects.all()
+            serializer = ProductSerializer(queryset, many=True)
+            context = {
+                'data': serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Product.DoesNotExist:
+            context = {
+                'message': 'No products found.'
+            }
+            return Response(context, status=status.HTTP_404_NOT_FOUND)
+    def post(self, request):
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            saved_data = serializer.save()
+            context = {
+                'data': serializer.data,
+                'name': serializer.data.get('name'),
+                'message': f"The product {saved_data.name} has been created."
+            }
+            return Response(context, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DetailedProducts(APIView):
+    def get(self, request, pk):
+        try:
+            queryset = Product.objects.get(product_id=pk)
+            serializer = ProductSerializer(queryset)
+            context = {
+                'data': serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Product.DoesNotExist:
+            return Response({'message': 'Product does not exist!'}, status=status.HTTP_404_NOT_FOUND)
+    def put(self, request, pk):
+        queryset = Product.objects.get(product_id=pk)
+        serializer = ProductSerializer(queryset, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            name = serializer.data.get('name')
+            context = {
+                'data': serializer.data,
+                'message': f"The product {name} has been updated."
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def delete(self, request, pk):
+        queryset = Product.objects.get(product_id=pk)
+        queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class ListProductsMixins(mixins.ListModelMixin,
+                         mixins.CreateModelMixin,
+                         generics.GenericAPIView):
+
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+```
+
+</details>
+
+<details>
+  <summary>18. Create DetailedProductsMixins</summary>
+
+URL
+
+```python
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('productlist/', views.list_products, name='list-products'),
+    path('messagelist/', views.list_messages, name='list-messages'),
+    path('classproductlist/', views.ListProducts.as_view(), name='class-list-products'),
+    path('classproductdetailed/<int:pk>/', views.DetailedProducts.as_view(), name='class-detailed-products'),
+    path('productlistmixins/', views.ListProductsMixins.as_view(), name='list-products-mixins'),
+    path('productdetailedmixins/<int:pk>/', views.DetailedProductsMixins.as_view(), name='detailed-products-mixins'),
+]
+```
+
+View
+
+```python
+class DetailedProductsMixins(mixins.RetrieveModelMixin,
+                             mixins.UpdateModelMixin,
+                             mixins.DestroyModelMixin,
+                             generics.GenericAPIView):
+
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+```
+
+</details>
+
+<details>
+  <summary>19. Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
@@ -1077,7 +1283,7 @@ https://www.django-rest-framework.org/
 </details>
 
 <details>
-  <summary>17. Create-ENV and Install Django</summary>
+  <summary>20. Install Django</summary>
 
 ```python
 https://www.django-rest-framework.org/
