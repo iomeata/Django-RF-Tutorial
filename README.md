@@ -354,7 +354,7 @@ class SnippetSerializer(serializers.Serializer):
 python manage.py shell
 ```
 
-Creating Model Object
+Creating Model Objects
 
 ```python
 from snippets.models import Snippet
@@ -369,7 +369,7 @@ snippet = Snippet(code='print("hello, world")\n')
 snippet.save()
 ```
 
-Model Object --> Python Object
+Model Object --> Python Object (Serialization)
 
 ```python
 serializer = SnippetSerializer(snippet)
@@ -380,7 +380,7 @@ serializer.data
 #{'id': 2, 'title': '', 'code': 'print("hello, world")\n', 'linenos': False, 'language': 'python', 'style': 'friendly'}
 ```
 
-Python Object --> JSON Object
+Python Object --> JSON Object (Serialization)(Render from Python to JSON)
 
 ```python
 content = JSONRenderer().render(serializer.data)
@@ -390,6 +390,22 @@ content
 ```python
 #b'{"id":2,"title":"","code":"print(\\"hello, world\\")\\n","linenos":false,"language":"python","style":"friendly"}'
 ```
+
+JSON Object --> Python Object (Deserialization)(Parse from JSON to Python)
+
+```python
+import io
+
+stream = io.BytesIO(content)
+data = JSONParser().parse(stream)
+data
+```
+
+```python
+#{'id': 2, 'title': '', 'code': 'print("hello, world")\n', 'linenos': False, 'language': 'python', 'style': 'friendly'}
+```
+
+Python Object --> Model Object (Deserialization)
 
 ```python
 python manage.py shell
