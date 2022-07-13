@@ -431,7 +431,51 @@ serializer.data
 </details>
 
 <details>
-  <summary>6. Create SnippetSerializer</summary>
+  <summary>6. Using ModelSerializers</summary>
+
+```python
+class SnippetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Snippet
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
+```
+
+Viewing Serializer Instance
+
+```python
+python manage.py shell
+```
+
+```python
+from snippets.serializers import SnippetSerializer
+serializer = SnippetSerializer()
+print(repr(serializer))
+```
+
+```python
+# SnippetSerializer():
+#    id = IntegerField(label='ID', read_only=True)
+#    title = CharField(allow_blank=True, max_length=100, required=False)
+#    code = CharField(style={'base_template': 'textarea.html'})
+#    linenos = BooleanField(required=False)
+#    language = ChoiceField(choices=[('Clipper', 'FoxPro'), ('Cucumber', 'Gherkin'), ('RobotFramework', 'RobotFramework'), ('abap', 'ABAP'), ('ada', 'Ada')...
+#    style = ChoiceField(choices=[('autumn', 'autumn'), ('borland', 'borland'), ('bw', 'bw'), ('colorful', 'colorful')...
+```
+
+</details>
+
+<details>
+  <summary>7. Using ModelSerializers</summary>
+
+```python
+python manage.py makemigrations snippets
+python manage.py migrate snippets
+```
+
+</details>
+
+<details>
+  <summary>8. Using ModelSerializers</summary>
 
 ```python
 python manage.py makemigrations snippets
