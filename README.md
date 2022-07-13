@@ -1240,6 +1240,8 @@ URL
 ```python
 from django.urls import path
 from . import views
+
+
 urlpatterns = [
     path('productlist/', views.list_products, name='list-products'),
     path('messagelist/', views.list_messages, name='list-messages'),
@@ -1253,6 +1255,7 @@ urlpatterns = [
 View
 
 ```python
+---
 class DetailedProductsMixins(mixins.RetrieveModelMixin,
                              mixins.UpdateModelMixin,
                              mixins.DestroyModelMixin,
