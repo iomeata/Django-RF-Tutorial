@@ -279,7 +279,7 @@ INSTALLED_APPS = [
 </details>
 
 <details>
-  <summary>3. Create snippets model</summary>
+  <summary>3. Create Snippets Model</summary>
 
 ```python
 from django.db import models
