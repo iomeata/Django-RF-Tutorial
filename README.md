@@ -2131,10 +2131,6 @@ class RetrieveUpdateDestroyAPIView(mixins.RetrieveModelMixin,
 ---
 
 <details>
-  <summary>OPEN</summary>
-<hr>
-
-<details>
   <summary>1. Django RF Docs</summary>
 
 ### [https://www.django-rest-framework.org/](https://www.django-rest-framework.org/)
@@ -2359,8 +2355,6 @@ http://127.0.0.1:8000/users/
 ```
 
 ![img_1.png](media/img_1.png)
-
-</details>
 
 </details>
 
