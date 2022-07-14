@@ -2579,7 +2579,7 @@ print(repr(serializer))
 </details>
 
 <details>
-  <summary>7. Using ModelSerializers</summary>
+  <summary>7. A</summary>
 
 ```python
 python manage.py makemigrations snippets
@@ -2589,7 +2589,7 @@ python manage.py migrate snippets
 </details>
 
 <details>
-  <summary>8. Using ModelSerializers</summary>
+  <summary>8. A</summary>
 
 ```python
 python manage.py makemigrations snippets
@@ -3500,7 +3500,7 @@ class DetailedProductsMixins(mixins.RetrieveModelMixin,
 </details>
 
 <details>
-  <summary>19. Install Django</summary>
+  <summary>19. A</summary>
 
 ```python
 https://www.django-rest-framework.org/
@@ -3509,7 +3509,7 @@ https://www.django-rest-framework.org/
 </details>
 
 <details>
-  <summary>20. Install Django</summary>
+  <summary>20. A</summary>
 
 ```python
 https://www.django-rest-framework.org/
