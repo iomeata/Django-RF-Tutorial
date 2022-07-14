@@ -2614,10 +2614,10 @@ https://www.django-rest-framework.org/
 </details>
 
 <details>
-  <summary>2. Create-venv-DRF and Install Django</summary>
+  <summary>2. Create Venv-Django-RF and Install Django</summary>
 
 ```python
-python -m venv venv-DRF
+python -m venv venv-Django-RF
 source venv/bin/activate
 ```
 
