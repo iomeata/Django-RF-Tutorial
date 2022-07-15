@@ -2733,7 +2733,7 @@ http://127.0.0.1:8000/users/1/
 psql -d template1
 # create postgres database
 CREATE DATABASE mbd;
-psql -h localhost
+#psql -h localhost
 # create postgres database user
 CREATE USER mcommerce WITH PASSWORD '123456';
 # set user encoding to utf8
