@@ -48,5 +48,6 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('products/', include('product.urls')),
     path('api-auth/', include('rest_framework.urls'))
 ]
