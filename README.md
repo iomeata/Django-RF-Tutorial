@@ -2762,7 +2762,7 @@ ALLOWED_HOSTS = ['.example.com','127.0.0.1', 'localhost']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mdb',
+        'NAME': 'mbd',
         'USER': 'mcommerce',
         'PASSWORD': '123456',
         'HOST': 'localhost',
