@@ -2684,10 +2684,14 @@ from rest_framework import routers, serializers, viewsets
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'is_staff', 'password']
+        fields = ['url', 'username', 'email', 'is_active', 'is_staff', 'is_superuser', 'password']
+        read_only_fields = ('is_active', 'is_superuser', 'is_staff')
         extra_kwargs = {
             'password': {'write_only': True},
         }
+
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data, is_active=True, is_staff=True, is_superuser=True)
 
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
