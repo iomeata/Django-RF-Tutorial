@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 from .serializers import ProductSerializer, MessageSerializer
-from rest_framework import status
+from rest_framework import status, mixins, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
@@ -110,3 +110,17 @@ class DetailedProducts(APIView):
         queryset = Product.objects.get(product_id=pk)
         queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ListProductsMixins(mixins.ListModelMixin,
+                         mixins.CreateModelMixin,
+                         generics.GenericAPIView):
+
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
