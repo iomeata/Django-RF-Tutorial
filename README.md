@@ -3368,7 +3368,7 @@ def list_products(request):
 
     if request.method == 'POST':
         serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -3394,7 +3394,7 @@ def list_messages(request):
 
     if request.method == 'POST':
         serializer = MessageSerializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             #serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -3469,6 +3469,8 @@ admin.site.register(ProductCategory)
 <details>
   <summary>15. Create Products Class Based Views</summary>
 
+View:
+
 ```python
 from django.shortcuts import render
 from .models import Product
@@ -3481,6 +3483,25 @@ from rest_framework.permissions import IsAuthenticated
 from datetime import datetime
 
 
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
+def list_products(request):
+    if request.method == 'GET':
+        queryset = Product.objects.all()
+        serializer = ProductSerializer(queryset, many=True)
+        context = {
+            'data': serializer.data
+        }
+        return Response(context, status=status.HTTP_200_OK)
+
+    if request.method == 'POST':
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class Message():
     def __init__(self, email, content, created_at=None, updated_at=None):
         self.email = email
@@ -3490,23 +3511,22 @@ class Message():
 
 
 @api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated,))
-def list_products(request):
-    queryset = Product.objects.all()
-    serializer = ProductSerializer(queryset, many=True)
-    context = {
-        'data': serializer.data
-    }
-    return Response(context, status=status.HTTP_200_OK)
-
-@api_view(['GET', 'POST'])
 def list_messages(request):
-    message_obj = Message('customer@gmail.com', 'Hello People!')
-    serializer = MessageSerializer(message_obj)
-    context = {
-        'data': serializer.data
-    }
-    return Response(context, status=status.HTTP_200_OK)
+    if request.method == 'GET':
+        message_obj = Message('customer@gmail.com', 'Hello People!')
+        serializer = MessageSerializer(message_obj)
+        context = {
+            'data': serializer.data
+        }
+        return Response(context)
+
+    if request.method == 'POST':
+        serializer = MessageSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            #serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class ListProducts(APIView):
     def get(self, request):
@@ -3526,11 +3546,11 @@ class ListProducts(APIView):
     def post(self, request):
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            saved_data = serializer.save()
+            serializer.save()
+            name = serializer.data.get('name')
             context = {
-                'data': serializer.data,
-                'name': serializer.data.get('name'),
-                'message': f"The product {saved_data.name} has been created."
+                'message': f"The product {name} has been created.",
+                'data': serializer.data
             }
             return Response(context, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -3554,8 +3574,8 @@ class DetailedProducts(APIView):
             serializer.save()
             name = serializer.data.get('name')
             context = {
-                'data': serializer.data,
-                'message': f"The product {name} has been updated."
+                'message': f"The product {name} has been updated.",
+                'data': serializer.data
             }
             return Response(context, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -3564,6 +3584,22 @@ class DetailedProducts(APIView):
         queryset = Product.objects.get(product_id=pk)
         queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+```
+
+URL:
+
+```python
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path('productlist/', views.list_products, name='list-products'),
+    path('messagelist/', views.list_messages, name='list-messages'),
+    path('classproductlist/', views.ListProducts.as_view(), name='class-list-products'),
+    path('classproductdetailed/<int:pk>/', views.DetailedProducts.as_view(), name='class-detailed-products'),
+]
 
 ```
 
