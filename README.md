@@ -2930,6 +2930,318 @@ http://127.0.0.1:8000/products/productlist/
 </details>
 
 <details>
+  <summary>10B. View Snippets</summary>
+
+drf-1
+
+```python
+from django.shortcuts import render
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import generics
+from rest_framework import viewsets
+from .models import Driver, Car
+from .serializers import DriverSerializer, CarSerializer
+
+
+# class DriverListCreateAPIView(generics.ListCreateAPIView):
+#     queryset = Driver.objects.all()
+#     serializer_class = DriverSerializer
+
+# class DriverUpdateAPIView(generics.UpdateAPIView):
+#     queryset = Driver.objects.all()
+#     serializer_class = DriverSerializer
+#     lookup_field = "id"
+
+# class CarListCreateAPIView(generics.ListCreateAPIView):
+#     queryset = Car.objects.all()
+#     serializer_class = CarSerializer
+
+# class CarUpdateAPIView(generics.UpdateAPIView):
+#     queryset = Car.objects.all()
+#     serializer_class = CarSerializer
+#     lookup_field = "id"
+
+
+def get(self, request):
+    query_cars = Car.objects.all()
+    context = {
+        "drivers": DriverSerializer(query_drivers, many=True).data,
+        "cars": CarSerializer(query_cars, many=True).data
+    }
+    return Response(context)
+
+def post(self, request):
+    if request.data.get('object') == "driver":
+        serializer = DriverSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+    elif request.data.get('object') == "car":
+        driver = Driver.objects.get(username=request.data.get('driver'))
+        serializer = CarSerializer(data=request.data)
+        serializer.is_valid()
+        Car.objects.create(
+            driver_id=driver,
+            **serializer.data
+        )
+    context = {"data": serializer.data}
+    return Response(context)
+
+def put(self, request, *args, **kwargs):
+    model_id = kwargs.get("id", None)
+    if not model_id:
+        return Response({"error": "method /PUT/ not allowed. No id exists."})
+    try:
+        instance = Driver.objects.get(id=model_id)
+    except Exception:
+        return Response({"error": "Object does not exist."})
+
+    serializer = DriverSerializer(data=request.data, instance=instance)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return Response({"data": serializer.data})
+
+
+def delete(self, request):
+    driver = Driver.objects.get(username=request.data.get('driver'))
+    driver.delete()
+    context = {"data": request.data}
+    return Response(context)
+
+```
+
+drf-2
+
+```python
+from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from functools import wraps
+from .models import Customer
+from .serializers import CustomerSerializer
+
+
+class CustomerAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request, format=None):
+        customers = Customer.published.all()
+        serializer = CustomerSerializer(customers, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, format=None):
+        serializer = CustomerSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def resource_checker(model):
+    def check_entity(fun):
+        @wraps(fun)
+        def inner_fun(*args, **kwargs):
+            try:
+                x = fun(*args, **kwargs)
+                return x
+            except model.DoesNotExist:
+                return Response({'error': 'Resource Not Found'}, status=status.HTTP_204_NO_CONTENT)
+        return inner_fun
+    return check_entity
+
+
+class CustomerDetailAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    @resource_checker(Customer)
+    def get(self, request, pk, format=None):
+        customer = Customer.published.get(pk=pk)
+        serializer = CustomerSerializer(customer)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @resource_checker(Customer)
+    def put(self, request, pk, format=None):
+        customer = Customer.published.get(pk=pk)
+        serializer = CustomerSerializer(customer, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @resource_checker(Customer)
+    def delete(self, request, pk, format=None):
+        customer = Customer.published.get(pk=pk)
+        customer.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+```
+
+drf-3
+
+```python
+from django.shortcuts import render
+from django.core.mail import send_mail
+from rest_framework import exceptions
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
+import random
+import string
+import datetime
+import jwt
+
+from .serializers import UserSerializer
+from .models import User, UserToken, Reset
+from .authentication import (JWTAuthentication, create_access_token,
+                             create_refresh_token, decode_refresh_token)
+
+
+class MembersListAPIView(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class RegisterAPIView(APIView):
+    def post(self, request):
+        data = request.data
+        if data.get('password') != data.get('password_confirm'):
+            raise exceptions.APIException('Passwords do not match!')
+        serializer = UserSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'message': 'User is Registered!', 'data': serializer.data})
+
+class LoginAPIView(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        user = User.objects.filter(email=email).first()
+        if user is None:
+            raise exceptions.AuthenticationFailed('Invalid Credentials')
+        if not user.check_password(password):
+            raise exceptions.AuthenticationFailed('Invalid Credentials')
+        access_token = create_access_token(user.id)
+        refresh_token = create_refresh_token(user.id)
+
+        UserToken.objects.create(
+            user_id = user.id,
+            token = refresh_token,
+            expired_at=datetime.datetime.utcnow() + datetime.timedelta(days=7)
+        )
+
+        response = Response()
+        response.set_cookie(key='refresh_token', value=refresh_token, httponly=True)
+        response.data = {
+            'token': access_token
+        }
+        return response
+
+class UserAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
+
+
+def post(request):
+    refresh_token = request.COOKIES.get('refresh_token')
+    id = decode_refresh_token(refresh_token)
+
+    if not UserToken.objects.filter(
+        user_id=id,
+        token=refresh_token,
+        expired_at__gt=datetime.datetime.now(tz=datetime.timezone.utc)
+    ).exists():
+        raise exceptions.AuthenticationFailed('unauthenticated')
+
+    access_token = create_access_token(id)
+    return Response({
+        'token': access_token
+    })
+
+
+class RefreshAPIView(APIView):
+    pass
+
+class LogoutAPIView(APIView):
+    def post(self, request):
+        refresh_token = request.COOKIES.get('refresh_token')
+        UserToken.objects.filter(token=refresh_token).delete()
+        response = Response()
+        response.delete_cookie(key='refresh_token')
+        response.data = {
+            'message': 'successfully logged out'
+        }
+        return response
+
+class ForgotAPIView(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        token = jwt.encode({"email": email}, "secret", algorithm="HS256")
+        otp = "".join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
+        # otp = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
+        # otp = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(6))
+        if Reset.objects.filter(email=email).exists():
+            Reset.objects.filter(email=email).delete()
+
+        Reset.objects.create(
+            email=email,
+            otp=otp,
+            token=token
+        )
+
+        url = f'http://localhost:3000/reset/{token}'
+        url_otp = 'http://localhost:3000/reset/'
+
+        send_mail(
+            subject='Reset your Password!',
+            message=f"""
+                    Hi,
+                    Click {url} to reset your password!
+                    OR
+                    Click the link below to reset your Password with the OTP: {otp}.
+                    {url_otp}
+
+                    Regards,
+                    example.com
+                    """,
+            from_email = 'from@example.com',
+            recipient_list = [email],
+            fail_silently=False,
+        )
+
+        return Response({
+            'message': 'successfully sent pin to email.'
+        })
+
+
+class ResetAPIView(APIView):
+    def post(self, request):
+        data = request.data
+        if data['password'] != data['password_confirm']:
+            raise exceptions.APIException('passwords do not match!')
+
+        reset_password = Reset.objects.filter(otp=data['otp']).first()
+        if not reset_password:
+            raise exceptions.APIException('Invalid link')
+
+        user = User.objects.filter(email=reset_password.email).first()
+        if not user:
+            raise exceptions.APIException('User not found!')
+
+        user.set_password(data['password'])
+        user.save()
+
+        return Response({
+            'message': 'Password changed successfully!'
+        })
+
+```
+
+</details>
+
+<details>
   <summary>11. Apply Authentication</summary>
 
 ```python
