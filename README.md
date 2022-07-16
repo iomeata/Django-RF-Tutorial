@@ -3239,6 +3239,21 @@ class ResetAPIView(APIView):
 
 ```
 
+Others
+
+```python
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
+
+@api_view(('GET',))
+@renderer_classes((TemplateHTMLRenderer, JSONRenderer))
+def get_assessment_count(request):
+    [...]
+    data = {'count': queryset.count()}
+    return Response(data, template_name='assessments.html')
+
+```
+
 </details>
 
 <details>
