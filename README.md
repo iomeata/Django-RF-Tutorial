@@ -34,7 +34,47 @@ print(p2.name, p2.age)
 </details>
 
 <details>
+  <summary>1. Class Initializer</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>2. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
   <summary>0. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>0. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>0. Serializers</summary>
+
+```python
+
+```
 
 </details>
 
