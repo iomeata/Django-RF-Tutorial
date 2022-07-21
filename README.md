@@ -26,8 +26,8 @@ p1.age = 30
 p2.name = "Henry"
 p2.age = 25
 
-print(p1.name, p1.age)
-print(p2.name, p2.age)
+print(p1.name, p1.age) #Bob 30
+print(p2.name, p2.age) #Henry 25
 
 ```
 
@@ -45,8 +45,8 @@ class Person:
 p1 = Person("Brad", 32)
 p2 = Person("Tommy", 21)
 
-print(p1.name, p1.age)
-print(p2.name, p2.age)
+print(p1.name, p1.age) #Brad 32
+print(p2.name, p2.age) #Tommy 21
 
 ```
 
@@ -66,14 +66,14 @@ class Person:
 p1 = Person("Brad", 32)
 p2 = Person("Tommy", 21)
 
-print(p1.name, p1.age, p1.email)
-print(p2.name, p2.age, p2.email)
+print(p1.name, p1.age, p1.email) #Brad 32 mymail@example.com
+print(p2.name, p2.age, p2.email) #Tommy 21 mymail@example.com
 ```
 
 </details>
 
 <details>
-  <summary>0. Serializers</summary>
+  <summary>3. Serializers</summary>
 
 ```python
 
