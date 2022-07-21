@@ -6,6 +6,24 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 
 ---
 
+### [0-PYTHON](#)
+
+---
+
+<details>
+  <summary>0. Serializers</summary>
+
+</details>
+
+
+<details>
+  <summary>0. Serializers</summary>
+
+</details>
+
+
+---
+
 ### [0-DOCS](#)
 
 ---
