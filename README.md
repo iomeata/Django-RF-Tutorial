@@ -53,7 +53,7 @@ print(p2.name, p2.age)
 </details>
 
 <details>
-  <summary>2. Serializers</summary>
+  <summary>2. Class Attributes</summary>
 
 ```python
 
