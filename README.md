@@ -56,7 +56,18 @@ print(p2.name, p2.age)
   <summary>2. Class Attributes</summary>
 
 ```python
+class Person:
+  email = "mymail@example.com"
 
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+p1 = Person("Brad", 32)
+p2 = Person("Tommy", 21)
+
+print(p1.name, p1.age, p1.email)
+print(p2.name, p2.age, p2.email)
 ```
 
 </details>
