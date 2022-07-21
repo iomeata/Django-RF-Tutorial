@@ -138,10 +138,11 @@ p1 = Student()
 </details>
 
 <details>
-  <summary>0. Serializers</summary>
+  <summary>6. Get Builtin Functions</summary>
 
 ```python
-
+print(dir(__builtins__))
+print(dir(abs))
 ```
 
 </details>
