@@ -37,6 +37,16 @@ print(p2.name, p2.age)
   <summary>1. Class Initializer</summary>
 
 ```python
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+p1 = Person("Brad", 32)
+p2 = Person("Tommy", 21)
+
+print(p1.name, p1.age)
+print(p2.name, p2.age)
 
 ```
 
