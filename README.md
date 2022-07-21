@@ -73,10 +73,23 @@ print(p2.name, p2.age, p2.email) #Tommy 21 mymail@example.com
 </details>
 
 <details>
-  <summary>3. Serializers</summary>
+  <summary>3. Class Methods</summary>
 
 ```python
+class Person:
+  email = "mymail@example.com"
 
+  def __init__(self, name, age, email):
+    self.name = name
+    self.age = age
+    self.email = email
+
+  def print_info(self):
+    print(f'My name is {self.name}, I am {self.age} years old, and my email is {self.email}.')
+
+p1 = Person("Brad", 32, "brad@example.com")
+p1.print_info()
+#My name is Brad, I am 32 years old, and my email is brad@example.com.
 ```
 
 </details>
