@@ -117,10 +117,22 @@ p1.full_info()
 </details>
 
 <details>
-  <summary>0. Serializers</summary>
+  <summary>5. Super Function</summary>
 
 ```python
+class Person:
+  def __init__(self):
+    print("This is from the Super class!")
 
+class Student(Person):
+  def __init__(self):
+    # Person.__init__(self)
+    super().__init__()
+    print("This is from the Sub class.")
+
+p1 = Student()
+#This is from the Super class!
+#This is from the Sub class.
 ```
 
 </details>
