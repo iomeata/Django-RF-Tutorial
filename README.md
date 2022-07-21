@@ -95,6 +95,46 @@ p1.print_info()
 </details>
 
 <details>
+  <summary>4. Class Inheritance</summary>
+
+```python
+class Person:
+  def __init__(self, name, email):
+    self.name = name
+    self.email = email
+
+  def full_info(self):
+    print(f'Name is {self.name}, and Email is {self.email}.')
+
+class Student(Person):
+  pass
+
+p1 = Student("Brad", "brad@example.com")
+p1.full_info()
+#Name is Brad, and Email is brad@example.com
+```
+
+</details>
+
+<details>
+  <summary>0. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>0. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
   <summary>0. Serializers</summary>
 
 ```python
