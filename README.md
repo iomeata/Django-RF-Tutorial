@@ -148,10 +148,31 @@ print(dir(abs))
 </details>
 
 <details>
-  <summary>0. Serializers</summary>
+  <summary>7. Breakpoint</summary>
 
 ```python
+for i in range(10):
+  print(f"i={i}")
 
+  if i == 7:
+    #import pdb; pdb.set_trace()
+    breakpoint()
+
+# i=0
+# i=1
+# i=2
+# i=3
+# i=4
+# i=5
+# i=6
+# i=7
+# > /home/runner/Python-LAB/main.py(4)<module>()
+# -> for i in range(10):
+# (Pdb) i
+# 7
+# (Pdb) continue
+# i=8
+# i=9
 ```
 
 </details>
