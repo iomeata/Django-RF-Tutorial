@@ -11,16 +11,32 @@ Django-RF-Docs-Tutorial By Ifeanyi Omeata
 ---
 
 <details>
-  <summary>0. Serializers</summary>
+  <summary>0. Python Classes</summary>
+
+```python
+class Person:
+  pass
+
+p1 = Person()
+p2 = Person()
+
+p1.name = "Bob"
+p1.age = 30
+
+p2.name = "Henry"
+p2.age = 25
+
+print(p1.name, p1.age)
+print(p2.name, p2.age)
+
+```
 
 </details>
-
 
 <details>
   <summary>0. Serializers</summary>
 
 </details>
-
 
 ---
 
