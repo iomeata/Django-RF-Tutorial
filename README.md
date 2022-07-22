@@ -297,6 +297,8 @@ print(type(ascii(['encodé', 'Россия']))) # <class 'str'>
 
 ```
 
+</details>
+
 <details>
   <summary>80. Serializers</summary>
 
