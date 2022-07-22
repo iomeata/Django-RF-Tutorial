@@ -199,7 +199,7 @@ print(my_new_list)
 </details>
 
 <details>
-  <summary>8. All</summary>
+  <summary>9. All</summary>
 
 ```python
 print(all("hey")) #True
@@ -223,10 +223,26 @@ print(all([x == 1 for x in listDiff])) #False
 </details>
 
 <details>
-  <summary>9. Any</summary>
+  <summary>10. Any</summary>
 
 ```python
+print(any([""])) #False
+print(any(["", False, 0])) #False
+print(any(["", False, 0, 11])) #True
+print(any(["", False, 0,])) #False
+print(any("Hey")) #True
 
+listSame = [1, 1, 1]
+listDiff = [1, 2, 3]
+
+print(any([x == 1 for x in listSame])) #True
+print(any([x == 10 for x in listSame])) #False
+print(any([x == 1 for x in listDiff])) #True
+
+names = ["John", "Joe", "James"]
+
+print(any([x == "Joe" for x in names])) #True
+print(any([x == "Dave" for x in names])) #False
 ```
 
 </details>
