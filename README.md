@@ -144,7 +144,10 @@ p1 = Student()
 </details>
 
 <details>
-  <summary>6. Get Builtin Details</summary>
+  <summary>6. Python Builtin Functions</summary>
+
+<details>
+  <summary>1. Get Builtin Details</summary>
 
 ```python
 print(dir(__builtins__))
@@ -154,7 +157,7 @@ print(dir(abs))
 </details>
 
 <details>
-  <summary>7. Breakpoint</summary>
+  <summary>2. Breakpoint</summary>
 
 ```python
 for i in range(10):
@@ -176,7 +179,7 @@ for i in range(10):
 # -> for i in range(10):
 # (Pdb) i
 # 7
-# (Pdb) continue
+# (Pdb) continue/ step
 # i=8
 # i=9
 ```
@@ -184,7 +187,7 @@ for i in range(10):
 </details>
 
 <details>
-  <summary>8. Abs</summary>
+  <summary>3. Abs</summary>
 
 ```python
 mylist = [1,2,3,-1,-2,-3]
@@ -199,7 +202,7 @@ print(my_new_list)
 </details>
 
 <details>
-  <summary>9. All</summary>
+  <summary>4. All</summary>
 
 ```python
 print(all("hey")) #True
@@ -223,7 +226,7 @@ print(all([x == 1 for x in listDiff])) #False
 </details>
 
 <details>
-  <summary>10. Any</summary>
+  <summary>5. Any</summary>
 
 ```python
 print(any([""])) #False
@@ -248,7 +251,7 @@ print(any([x == "Dave" for x in names])) #False
 </details>
 
 <details>
-  <summary>11. Ascii</summary>
+  <summary>6. Ascii</summary>
 
 ```python
 print(ascii(1)) # '1'
@@ -263,7 +266,7 @@ print(type(ascii(['encodé', 'Россия']))) # <class 'str'>
 </details>
 
 <details>
-  <summary>12. Binary</summary>
+  <summary>7. Binary</summary>
 
 ```python
 print(bin(1)) # 0b1
@@ -281,7 +284,7 @@ print(format(255, 'b')) # 11111111
 </details>
 
 <details>
-  <summary>13. Bool</summary>
+  <summary>8. Bool</summary>
 
 ```python
 print(bool(1)) # True
@@ -305,7 +308,7 @@ print(bool(myAge < brotherAge)) # False
 </details>
 
 <details>
-  <summary>80. Serializers</summary>
+  <summary>9. Serializers</summary>
 
 ```python
 
@@ -418,6 +421,8 @@ print(bool(myAge < brotherAge)) # False
 ```python
 
 ```
+
+</details>
 
 </details>
 
