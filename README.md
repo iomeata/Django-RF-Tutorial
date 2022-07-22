@@ -248,15 +248,54 @@ print(any([x == "Dave" for x in names])) #False
 </details>
 
 <details>
-  <summary>80. others</summary>
+  <summary>11. Ascii</summary>
 
 ```python
-for i in range(10):
-  print(f"i={i}")
+print(ascii(1)) # '1'
+print(ascii([])) # '[]'
+print(ascii('encodé')) # 'encod\xe9'
+print(ascii('Россия')) # '\u0420\u043e\u0441\u0441\u0438\u044f'
+print(ascii(['encodé', 'Россия'])) # '['encod\xe9', '\u0420\u043e\u0441\u0441\u0438\u044f']'
+print(type(ascii(['encodé', 'Россия']))) # <class 'str'>
 
 ```
 
 </details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
 
 <details>
   <summary>80. Serializers</summary>
