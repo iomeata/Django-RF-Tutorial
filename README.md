@@ -17,7 +17,10 @@ Django-RF-Tutorial By Ifeanyi Omeata
 ---
 
 <details>
-  <summary>0. Python Classes</summary>
+  <summary>1. Python Classes</summary>
+
+<details>
+  <summary>1. Simple Python Class</summary>
 
 ```python
 class Person:
@@ -40,7 +43,7 @@ print(p2.name, p2.age) #Henry 25
 </details>
 
 <details>
-  <summary>1. Class Initializer</summary>
+  <summary>2. Class Initializer</summary>
 
 ```python
 class Person:
@@ -59,7 +62,7 @@ print(p2.name, p2.age) #Tommy 21
 </details>
 
 <details>
-  <summary>2. Class Attributes</summary>
+  <summary>3. Class Attributes</summary>
 
 ```python
 class Person:
@@ -79,7 +82,7 @@ print(p2.name, p2.age, p2.email) #Tommy 21 mymail@example.com
 </details>
 
 <details>
-  <summary>3. Class Methods</summary>
+  <summary>4. Class Methods</summary>
 
 ```python
 class Person:
@@ -101,7 +104,7 @@ p1.print_info()
 </details>
 
 <details>
-  <summary>4. Class Inheritance</summary>
+  <summary>5. Class Inheritance</summary>
 
 ```python
 class Person:
@@ -123,7 +126,7 @@ p1.full_info()
 </details>
 
 <details>
-  <summary>5. Super Function</summary>
+  <summary>6. Super Function</summary>
 
 ```python
 class Person:
@@ -143,8 +146,10 @@ p1 = Student()
 
 </details>
 
+</details>
+
 <details>
-  <summary>6. Python Builtin Functions</summary>
+  <summary>#2. Python Builtin Functions</summary>
 
 <details>
   <summary>1. Get Builtin Details</summary>
