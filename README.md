@@ -1283,7 +1283,7 @@ http://127.0.0.1:8000/products/productlist/
 </details>
 
 <details>
-  <summary>10B. View Snippets</summary>
+  <summary>10A. View Snippets</summary>
 
 drf-1
 
@@ -1789,11 +1789,6 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-</details>
-
-<details>
-  <summary>14. Add ProductCategory Model to Admin</summary>
-
 ```python
 from django.contrib import admin
 from .models import Product, ProductCategory
@@ -1806,7 +1801,7 @@ admin.site.register(ProductCategory)
 </details>
 
 <details>
-  <summary>15. Create Products Class Based Views</summary>
+  <summary>14. Create Products Class Based Views</summary>
 
 View:
 
@@ -1945,7 +1940,7 @@ urlpatterns = [
 </details>
 
 <details>
-  <summary>16. Mixins</summary>
+  <summary>15. Mixins</summary>
 
 ListModelMixin
 
@@ -1981,7 +1976,7 @@ DestroyModelMixin
 </details>
 
 <details>
-  <summary>17. Create ListProductsMixins</summary>
+  <summary>16. Create ListProductsMixins</summary>
 
 URL
 
@@ -2030,7 +2025,7 @@ class ListProductsMixins(mixins.ListModelMixin,
 </details>
 
 <details>
-  <summary>18. Create DetailedProductsMixins</summary>
+  <summary>17. Create DetailedProductsMixins</summary>
 
 URL
 
@@ -2099,19 +2094,19 @@ class DetailedProductsMixins(mixins.RetrieveModelMixin,
 </details>
 
 <details>
-  <summary>19. A</summary>
+  <summary>18. </summary>
 
 ```python
-https://www.django-rest-framework.org/
+
 ```
 
 </details>
 
 <details>
-  <summary>20. A</summary>
+  <summary>19. </summary>
 
 ```python
-https://www.django-rest-framework.org/
+
 ```
 
 </details>
