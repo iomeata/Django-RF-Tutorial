@@ -541,7 +541,7 @@ print(ord('\U0010ffff'))  # 1114111
 </details>
 
 <details>
-  <summary>4. Set up new project (tutorial) and app (quickstart)</summary>
+  <summary>4. Create new project (tutorial) and app (quickstart)</summary>
 
 ```python
   django-admin startproject tutorial .
@@ -703,7 +703,7 @@ http://127.0.0.1:8000/users/
 </details>
 
 <details>
-  <summary>9. Install pygments module/Create new App "snippets"</summary>
+  <summary>9. Install pygments module/Create new App snippets</summary>
 
 ```python
 pip install django
@@ -726,7 +726,9 @@ INSTALLED_APPS = [
 </details>
 
 <details>
-  <summary>10. Create Snippets Model/SnippetSerialize</summary>
+  <summary>10. Create Snippets Model/SnippetSerializer</summary>
+
+- Snippets Model
 
 ```python
 from django.db import models
@@ -754,6 +756,8 @@ class Snippet(models.Model):
 python manage.py makemigrations snippets
 python manage.py migrate snippets
 ```
+
+- SnippetSerializer
 
 ```python
 from rest_framework import serializers
