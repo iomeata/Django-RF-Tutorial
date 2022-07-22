@@ -325,10 +325,28 @@ print(bool(myAge < brotherAge)) # False
 </details>
 
 <details>
-  <summary>9. Serializers</summary>
+  <summary>9. Bytes and Bytearray</summary>
 
 ```python
+print(type(bytes())) # <class 'bytes'>
+print(type(bytearray())) # <class 'bytearray'>
+print(bytes("hey", "UTF-8")) # b'hey'
+print(bytes("hey", "UTF-16")) # b'\xff\xfeh\x00e\x00y\x00'
+print(bytes(1)) # b'\x00'
+print(bytes(4)) # b'\x00\x00\x00\x00'
+print(bytes([1,2,3])) # b'\x01\x02\x03'
+print(bytearray([1,2,3])) # bytearray(b'\x01\x02\x03')
 
+x = bytearray([1,2,3])
+x.append(4)
+print(x) # bytearray(b'\x01\x02\x03\x04')
+x.reverse()
+print(x) # bytearray(b'\x04\x03\x02\x01')
+
+print(bytearray("hey", "UTF-8", "strict")) # bytearray(b'hey')
+print(bytearray("Poсcия", "UTF-8", "strict")) # bytearray(b'Po\xd1\x81c\xd0\xb8\xd1\x8f')
+print(bytearray("Poсcèя", "ascii", "ignore")) # bytearray(b'Poc')
+print(bytearray("Poсcèя", "ascii", "replace")) # bytearray(b'Po?c??')
 ```
 
 </details>
