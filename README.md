@@ -575,7 +575,7 @@ INSTALLED_APPS = [
 </details>
 
 <details>
-  <summary>7. Create SuperUser</summary>
+  <summary>5. Create SuperUser</summary>
 
 ```python
 python manage.py createsuperuser --email admin@example.com --username admin
@@ -584,9 +584,9 @@ python manage.py createsuperuser --email admin@example.com --username admin
 </details>
 
 <details>
-  <summary>8. Create HyperlinkedModelSerializer for User and Group</summary>
+  <summary>6. Create HyperlinkedModelSerializer(User and Group)/Viewsets/API URLs</summary>
 
-[here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/3705344a5098b551dab1d2586928d71e6783dbae)
+- HyperlinkedModelSerializer
 
 ```python
 from django.contrib.auth.models import User, Group
@@ -605,12 +605,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 ```
 
-</details>
-
-<details>
-  <summary>9. Create Viewsets</summary>
-
-[here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/5ddefcfab2af982cc33ed7dabcaf97942bf0d470)
+- Viewsets
 
 ```python
 from django.contrib.auth.models import User, Group
@@ -637,12 +632,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 ```
 
-</details>
-
-<details>
-  <summary>10. Create API Urls</summary>
-
-[here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/c70bc238d7d8824c56838132a946d84343df848e)
+- API URLs
 
 ```python
 from django.contrib import admin
@@ -666,7 +656,7 @@ urlpatterns = [
 </details>
 
 <details>
-  <summary>11. Set Pagination</summary>
+  <summary>7. Set Pagination</summary>
 
 [here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/c0f58cb7b5ef664fa6ecca9b5dafd21efcf38b48)
 
