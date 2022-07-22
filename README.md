@@ -499,7 +499,7 @@ print(ord('\U0010ffff'))  # 1114111
 ---
 
 <details>
-  <summary>1. Django RF Docs</summary>
+  <summary>1. Django RF Official Docs</summary>
 
 ### [https://www.django-rest-framework.org/](https://www.django-rest-framework.org/)
 
@@ -513,7 +513,7 @@ print(ord('\U0010ffff'))  # 1114111
   source venv/bin/activate
 
   python -m venv venv
-  Set-ExecutionPolicy Unrestricted -Scope Process
+  #Set-ExecutionPolicy Unrestricted -Scope Process
   source venv\Scripts\activate
 ```
 
@@ -551,11 +551,6 @@ print(ord('\U0010ffff'))  # 1114111
   django-admin startapp quickstart
 ```
 
-</details>
-
-<details>
-  <summary>5. Run Migrations</summary>
-
 ```python
   python manage.py makemigrations
 ```
@@ -563,11 +558,6 @@ print(ord('\U0010ffff'))  # 1114111
 ```python
   python manage.py migrate
 ```
-
-</details>
-
-<details>
-  <summary>6. Add Django Rest Framework and App to settings</summary>
 
 [here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
 
