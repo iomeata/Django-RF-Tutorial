@@ -658,8 +658,6 @@ urlpatterns = [
 <details>
   <summary>7. Set Pagination</summary>
 
-[here](https://github.com/iomeata/Django-RF-Docs-Tutorial/commit/c0f58cb7b5ef664fa6ecca9b5dafd21efcf38b48)
-
 ```python
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -684,7 +682,7 @@ class FooViewSet(viewsets.ModelViewSet):
 </details>
 
 <details>
-  <summary>12. Test Endpoints on Browsable API</summary>
+  <summary>8. Test Endpoints on Browsable API</summary>
 
 ```python
 python manage.py runserver
@@ -705,18 +703,13 @@ http://127.0.0.1:8000/users/
 </details>
 
 <details>
-  <summary>1. Install pygments</summary>
+  <summary>9. Install pygments module/Create new App "snippets"</summary>
 
 ```python
 pip install django
 pip install djangorestframework
 pip install pygments  # We'll be using this for the code highlighting
 ```
-
-</details>
-
-<details>
-  <summary>2. Create new App "snippets"</summary>
 
 ```python
 python manage.py startapp snippets
@@ -733,7 +726,7 @@ INSTALLED_APPS = [
 </details>
 
 <details>
-  <summary>3. Create Snippets Model</summary>
+  <summary>10. Create Snippets Model/SnippetSerialize</summary>
 
 ```python
 from django.db import models
@@ -761,11 +754,6 @@ class Snippet(models.Model):
 python manage.py makemigrations snippets
 python manage.py migrate snippets
 ```
-
-</details>
-
-<details>
-  <summary>4. Create SnippetSerializer</summary>
 
 ```python
 from rest_framework import serializers
@@ -802,7 +790,7 @@ class SnippetSerializer(serializers.Serializer):
 </details>
 
 <details>
-  <summary>5. Understanding Serialization: Working with Django Shell</summary>
+  <summary>11. Understanding Serialization: Working with Django Shell</summary>
 
 ```python
 python manage.py shell
