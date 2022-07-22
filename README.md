@@ -138,17 +138,16 @@ p1 = Student()
 </details>
 
 <details>
-  <summary>6. Get Builtin Functions</summary>
+  <summary>6. Python Builtin Functions</summary>
+
+1-Get Builtin details
 
 ```python
 print(dir(__builtins__))
 print(dir(abs))
 ```
 
-</details>
-
-<details>
-  <summary>7. Breakpoint</summary>
+2-Breakpoint
 
 ```python
 for i in range(10):
@@ -173,6 +172,31 @@ for i in range(10):
 # (Pdb) continue
 # i=8
 # i=9
+```
+
+3-abs
+
+```python
+mylist = [1,2,3,-1,-2,-3]
+my_new_list = [abs(i) for i in mylist]
+
+print(mylist)
+print(my_new_list)
+# [1, 2, 3, -1, -2, -3]
+# [1, 2, 3, 1, 2, 3]
+```
+
+4-
+
+</details>
+
+<details>
+  <summary>7. others</summary>
+
+```python
+for i in range(10):
+  print(f"i={i}")
+
 ```
 
 </details>
