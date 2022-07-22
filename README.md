@@ -263,16 +263,25 @@ print(type(ascii(['encodé', 'Россия']))) # <class 'str'>
 </details>
 
 <details>
-  <summary>80. Serializers</summary>
+  <summary>12. Binary</summary>
 
 ```python
-
+print(bin(1)) # 0b1
+print(type(bin(1))) # <class 'str'>
+print(bin(4)) # 0b100
+print(bin(64)) # 0b1000000
+print(bin(128)) # 0b10000000
+print(bin(255)) # 0b11111111
+print(bin(0x4)) # 0b100
+print(bin(0x64)) # 0b1100100
+print(format(4, 'b')) # 100
+print(format(255, 'b')) # 11111111
 ```
 
 </details>
 
 <details>
-  <summary>80. Serializers</summary>
+  <summary>13. Serializers</summary>
 
 ```python
 
