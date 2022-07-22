@@ -281,10 +281,25 @@ print(format(255, 'b')) # 11111111
 </details>
 
 <details>
-  <summary>13. Serializers</summary>
+  <summary>13. Bool</summary>
 
 ```python
+print(bool(1)) # True
+print(type(bool(1))) # <class 'bool'>
+print(bool(0)) # False
+print(bool(True)) # True
+print(bool(False)) # False
+print(bool("hey")) # True
+print(bool([1, 0])) # True
+print(bool([0, 0, False])) # True
+print(bool({"": False})) # True
+print(bool(1 == 2)) # False
+print(bool(1 == 1)) # True
 
+myAge = 27
+brotherAge = 25
+print(bool(myAge > brotherAge)) # True
+print(bool(myAge < brotherAge)) # False
 ```
 
 </details>
