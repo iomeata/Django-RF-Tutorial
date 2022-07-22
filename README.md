@@ -229,7 +229,7 @@ print(all([x == 1 for x in listDiff])) #False
 print(any([""])) #False
 print(any(["", False, 0])) #False
 print(any(["", False, 0, 11])) #True
-print(any(["", False, 0,])) #False
+print(any(["", False, 0, True])) #True
 print(any("Hey")) #True
 
 listSame = [1, 1, 1]
