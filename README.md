@@ -146,6 +146,10 @@ p1 = Student()
 <details>
   <summary>6. Python Builtin Functions</summary>
 
+```python
+
+```
+
 1-Get Builtin details
 
 ```python
