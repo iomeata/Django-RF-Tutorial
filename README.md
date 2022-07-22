@@ -935,30 +935,49 @@ print(repr(serializer))
 ---
 
 <details>
-  <summary>1. Django RF Docs</summary>
+  <summary>1. Django RF Official Docs</summary>
+
+### [https://www.django-rest-framework.org/](https://www.django-rest-framework.org/)
+
+</details>
+
+<details>
+  <summary>2. Create a virtual environment Venv</summary>
 
 ```python
-https://www.django-rest-framework.org/
+  python -m venv venv
+  source venv/bin/activate
+
+  python -m venv venv
+  #Set-ExecutionPolicy Unrestricted -Scope Process
+  source venv\Scripts\activate
 ```
 
 </details>
 
 <details>
-  <summary>2. Create Venv-Django-RF and Install Django</summary>
+  <summary>3. Install Django and Django REST framework</summary>
 
 ```python
-python -m venv venv-Django-RF
-source venv/bin/activate
+  pip install django django-rest-framework django-shortcuts
 ```
 
 ```python
-pip install django django-rest-framework django-shortcuts
+  pip freeze
+```
+
+```python
+  pip install -r requirements.txt
+```
+
+```python
+  pip freeze > requirements.txt
 ```
 
 </details>
 
 <details>
-  <summary>3. Add and Access REST framework's Default login and logout views</summary>
+  <summary>4. Add REST framework's Default login and logout views</summary>
 
 ```python
 INSTALLED_APPS = [
@@ -987,7 +1006,7 @@ http://127.0.0.1:8000/api-auth/login/
 </details>
 
 <details>
-  <summary>4. Include DjangoModelPermissionsOrAnonReadOnly</summary>
+  <summary>5. Include DjangoModelPermissionsOrAnonReadOnly</summary>
 
 ```python
 REST_FRAMEWORK = {
@@ -1002,7 +1021,7 @@ REST_FRAMEWORK = {
 </details>
 
 <details>
-  <summary>5. Setup Demo for User Authentication in Urls</summary>
+  <summary>6. Setup User Authentication in Urls</summary>
 
 ```python
 from django.urls import path, include
@@ -1056,7 +1075,7 @@ http://127.0.0.1:8000/users/1/
 </details>
 
 <details>
-  <summary>6. Create PostgreSQL database</summary>
+  <summary>7. Create PostgreSQL database</summary>
 
 ```python
 # ubuntu command to access the postgres terminal
