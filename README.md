@@ -155,7 +155,7 @@ p1 = Student()
 </details>
 
 <details>
-  <summary>#2. Python Builtin Functions</summary>
+  <summary>#2. Python Built-in Functions</summary>
 
 ################################################################################################
 ################################################################################################
@@ -164,7 +164,7 @@ p1 = Student()
 ################################################################################################
 
 <details>
-  <summary>1. Get Builtin Details</summary>
+  <summary>1. Get Built-in Details</summary>
 
 ```python
 print(dir(__builtins__))
@@ -383,16 +383,29 @@ print(callable(Example)) # True
 </details>
 
 <details>
-  <summary>80. Serializers</summary>
+  <summary>11. Chr and Ord</summary>
 
 ```python
+Return the string representing a character whose Unicode code point
+is the integer i. For example, chr(97) returns the string 'a', while
+chr (8364) returns the string 'e'. This is the inverse of ord().
+```
 
+```python
+print(chr(97))  # a
+print(chr(36))  # $
+print(chr(0))  # '\x00'
+print(chr(1114111))  # '\U0010ffff'
+print(ord('a'))  # 97
+print(ord('c'))  # 99
+print(ord('\x00'))  # 0
+print(ord('\U0010ffff'))  # 1114111
 ```
 
 </details>
 
 <details>
-  <summary>80. Serializers</summary>
+  <summary>12. Class Method decorator</summary>
 
 ```python
 
