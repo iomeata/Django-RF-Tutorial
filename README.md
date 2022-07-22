@@ -1135,7 +1135,7 @@ python manage.py runserver
 </details>
 
 <details>
-  <summary>7. Create Product App</summary>
+  <summary>8. Create Product App and Product Model</summary>
 
 ```python
 python manage.py startapp product
@@ -1148,11 +1148,6 @@ INSTALLED_APPS = [
     'product',
 ]
 ```
-
-</details>
-
-<details>
-  <summary>8. Create Product Model</summary>
 
 ```python
 from django.db import models
@@ -1184,11 +1179,6 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-</details>
-
-<details>
-  <summary>9. Register Product Model in Admin</summary>
-
 ```python
 from django.contrib import admin
 from .models import Product
@@ -1204,7 +1194,7 @@ python manage.py runserver
 </details>
 
 <details>
-  <summary>10. Create Productlist Serializer, URL and View</summary>
+  <summary>9. Create Productlist Serializer, URL and View</summary>
 
 Type of Serializers
 
