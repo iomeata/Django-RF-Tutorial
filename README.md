@@ -316,6 +316,87 @@ print(type(ascii(['encodé', 'Россия']))) # <class 'str'>
 
 </details>
 
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
+<details>
+  <summary>80. Serializers</summary>
+
+```python
+
+```
+
+</details>
+
 ---
 
 ### [2-DRF-DOCS](#)
