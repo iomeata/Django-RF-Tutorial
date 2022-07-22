@@ -877,7 +877,7 @@ serializer.data
 </details>
 
 <details>
-  <summary>6. Using ModelSerializers</summary>
+  <summary>12. Using ModelSerializers</summary>
 
 ```python
 class SnippetSerializer(serializers.ModelSerializer):
@@ -911,21 +911,19 @@ print(repr(serializer))
 </details>
 
 <details>
-  <summary>7. A</summary>
+  <summary>13.</summary>
 
 ```python
-python manage.py makemigrations snippets
-python manage.py migrate snippets
+
 ```
 
 </details>
 
 <details>
-  <summary>8. A</summary>
+  <summary>14.</summary>
 
 ```python
-python manage.py makemigrations snippets
-python manage.py migrate snippets
+
 ```
 
 </details>
