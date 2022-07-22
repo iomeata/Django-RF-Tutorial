@@ -144,20 +144,17 @@ p1 = Student()
 </details>
 
 <details>
-  <summary>6. Python Builtin Functions</summary>
-
-```python
-
-```
-
-1-Get Builtin details
+  <summary>6. Get Builtin Details</summary>
 
 ```python
 print(dir(__builtins__))
 print(dir(abs))
 ```
 
-2-Breakpoint
+</details>
+
+<details>
+  <summary>7. Breakpoint</summary>
 
 ```python
 for i in range(10):
@@ -184,7 +181,10 @@ for i in range(10):
 # i=9
 ```
 
-3-abs
+</details>
+
+<details>
+  <summary>8. Abs</summary>
 
 ```python
 mylist = [1,2,3,-1,-2,-3]
@@ -196,7 +196,10 @@ print(my_new_list)
 # [1, 2, 3, 1, 2, 3]
 ```
 
-4-all
+</details>
+
+<details>
+  <summary>8. All</summary>
 
 ```python
 print(all("hey")) #True
@@ -217,6 +220,11 @@ print(all([x == 1 for x in listDiff])) #False
 
 ```
 
+</details>
+
+<details>
+  <summary>9. Any</summary>
+
 ```python
 
 ```
@@ -224,7 +232,7 @@ print(all([x == 1 for x in listDiff])) #False
 </details>
 
 <details>
-  <summary>7. others</summary>
+  <summary>80. others</summary>
 
 ```python
 for i in range(10):
@@ -235,7 +243,7 @@ for i in range(10):
 </details>
 
 <details>
-  <summary>0. Serializers</summary>
+  <summary>80. Serializers</summary>
 
 ```python
 
