@@ -196,7 +196,30 @@ print(my_new_list)
 # [1, 2, 3, 1, 2, 3]
 ```
 
-4-
+4-all
+
+```python
+print(all("hey")) #True
+print(all("")) #True
+print(all([False, 0])) #False
+print(all([False, 1])) #False
+print(all([False, False])) #False
+print(all([True, False])) #False
+print(all([True, True])) #True
+print(all([10, 1])) #True
+
+listSame = [1, 1, 1]
+listDiff = [1, 2, 3]
+
+print(all([x == 1 for x in listSame])) #True
+print(all([x == 10 for x in listSame])) #False
+print(all([x == 1 for x in listDiff])) #False
+
+```
+
+```python
+
+```
 
 </details>
 
