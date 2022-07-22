@@ -218,7 +218,7 @@ for i in range(10):
 
 ---
 
-### [2-DJANGO-REST-FRAMEWORK](#)
+### [2-DRF-DOCS](#)
 
 ---
 
@@ -449,12 +449,6 @@ http://127.0.0.1:8000/users/
 ![img_1.png](media/img_1.png)
 
 </details>
-
----
-
-### [2-SERIALIZATION](#)
-
----
 
 <details>
   <summary>1. Install pygments</summary>
@@ -692,7 +686,7 @@ python manage.py migrate snippets
 
 ---
 
-### [3-DRF-PROJECT-IAMPYTHON](#)
+### [2-DRF-PROJECT-IAMPYTHON](#)
 
 ---
 
