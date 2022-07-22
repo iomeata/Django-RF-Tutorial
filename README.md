@@ -405,7 +405,7 @@ print(ord('\U0010ffff'))  # 1114111
 </details>
 
 <details>
-  <summary>12. Class Method decorator</summary>
+  <summary>12. @classmethod decorator</summary>
 
 ```python
 
