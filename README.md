@@ -352,10 +352,32 @@ print(bytearray("Poсcèя", "ascii", "replace")) # bytearray(b'Po?c??')
 </details>
 
 <details>
-  <summary>80. Serializers</summary>
+  <summary>10. Callables</summary>
 
 ```python
+- Functions are callables
+- Classes are callables
+- Methods (which are functions that hang off of classes) are callables
+- Instances of classes can even be turned into callables
+```
 
+```python
+x = "Hey"
+y = type("Hey")
+num = 5
+
+def test_function():
+  return "Hey"
+
+class Example:
+  def __init__(self):
+    return 2 + 4
+
+print(callable(x)) # False
+print(callable(y)) # True
+print(callable(num)) # False
+print(callable(test_function)) # True
+print(callable(Example)) # True
 ```
 
 </details>
