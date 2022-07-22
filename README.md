@@ -559,8 +559,6 @@ print(ord('\U0010ffff'))  # 1114111
   python manage.py migrate
 ```
 
-[here](https://github.com/iomeata/Django-API-Tutorial-1/commit/388d9ef90e787e6836b472370251500993521611)
-
 ```python
 INSTALLED_APPS = [
     'django.contrib.admin',
