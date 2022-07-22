@@ -1,6 +1,6 @@
-# Django-RF-Docs-Tutorial
+# Django-RF-Tutorial
 
-Django-RF-Docs-Tutorial By Ifeanyi Omeata
+Django-RF-Tutorial By Ifeanyi Omeata
 
 ## Tutorial
 
